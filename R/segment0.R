@@ -1,7 +1,14 @@
-#' FUNCTION "segment_0"
+#' segment_0
+#'
 #' Define a funtion "segment0" that separate different shifts
-Imports:
-  data.table
+#'
+#' @import data.table
+#'
+#' @param speed the speed is a vector of speeds to be segmented.
+#' @param threshold the threshold that is needed to segment the speeds. (the unit of threshold is an hour)
+#' @param time_diff the difference of time for each data point.
+#'
+#' @return shift number, which is a vector which indicates the separated shift numbers, with 0 indicated time of taking a rest.
 #' @export
 segment_0 = function(speed, threshold, time_diff) {
   ## Replace very long single points
@@ -21,3 +28,5 @@ segment_0 = function(speed, threshold, time_diff) {
   r2$values[r2$values] = cumsum(r2$values[r2$values])
   return(inverse.rle(r2))
 }
+
+

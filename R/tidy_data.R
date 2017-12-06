@@ -1,9 +1,17 @@
-# Function "tidy_data"
-
+#' tidy_data
+#'
+#' This function cleans the driver data and returns the cleaned dataset.
+#'
+#' @param data the data to be cleaned.
+#' @param delete_duplicate where the duplicated data points are to be deleted. The default value is TRUE, which means the duplicated data points will be deleted by default.
+#'
+#' @import lubridate
+#' @import dplyr
+#'
+#' @export
 
 tidy_data <- function(data, delete_duplicate = TRUE){
-  require(dplyr)
-  require(lubridate)
+
   data <- data[!is.na(data$DATIME_GMT),]
   data$DATEGMT_lub <- suppressWarnings(lubridate::mdy_hm(data$DATIME_GMT))
   data <- data[!is.na(data$DATEGMT_lub),]
