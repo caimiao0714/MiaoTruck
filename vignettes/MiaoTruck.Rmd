@@ -1,0 +1,73 @@
+---
+title: "An introduction to the MiaoTruck package"
+author: "Miao Cai <miao.cai@slu.edu>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package serves to read, tidy, aggregate and analyze the truck drivers' data in the project [GOALI/Collaborative Research: Human Maintenance - A Prognostics Framework to Model Changes in Drivers' Safety Performance and Optimize Dispatching Policies](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1635927) funded by National Science Foundation.
+
+## Part 1: Read data
+
+This read data part includes two functions: `read_all_csv()` and `read_all_excel()` which import **ALL** Comma-separated Values(.csv) file or Microsoft Excel files(.xlsx & .xls) in the assigned folder.
+
+Let's assume there are three files (A.csv, B.csv, C.csv) in the path `C:\\data`.
+
+    all_csv = read_all_csv("C:\\data")
+
+The above code should read all .csv & .csv files into the list "all_csv". You can access each data.frame by all_csv[["A"]], all_csv[["B"]], and all_csv[["C"]]. If the parameter "add_variable" in `read_all_csv()` is set as TRUE, an extra variable "file_name" will be added to each data.frame in the output list.
+
+In the same way, let's assume there are three files (A.xlsx, B.xlsx, C.xls) in the path `C:\\data`.
+
+    all_excel = read_all_excel("C:\\data")
+    
+The above code should read all .xlsx & .xls files into the list "all_excel". You can access each data.frame by all_excel[["A"]], all_excel[["B"]], and all_excel[["C"]]. If the parameter "add_variable" is set as TRUE, an extra variable "file_name" will be added to each data.frame in the output list.
+
+## Part 2: Tidy data
+
+There are also two function for tidying the truck driver's data: `segment0()` & `tidy_data()`.
+
+
+----------------------
+The following contents are from the Vignette templates, which are used as a reference.
+
+## Figures
+
+The figure sizes have been customised so that you can easily put two images side-by-side. 
+
+```{r, fig.show='hold'}
+plot(1:10)
+plot(10:1)
+```
+
+You can enable figure captions by `fig_caption: yes` in YAML:
+
+    output:
+      rmarkdown::html_vignette:
+        fig_caption: yes
+
+Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+
+## More Examples
+
+You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+
+```{r, echo=FALSE, results='asis'}
+knitr::kable(head(mtcars, 10))
+```
+
+Also a quote using `>`:
+
+> "He who gives up [code] safety for [code] speed deserves neither."
+([via](https://twitter.com/hadleywickham/status/504368538874703872))

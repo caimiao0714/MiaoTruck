@@ -4,10 +4,17 @@
 \alias{tidy_data}
 \title{tidy_data}
 \usage{
-tidy_data(data, delete_duplicate = TRUE)
+tidy_data(data, threshold_hour = 8, thre_tem = 0, thre_visul = 1000,
+  delete_duplicate = TRUE)
 }
 \arguments{
 \item{data}{the data to be cleaned.}
+
+\item{threshold_hour}{The threshold of hour to segment the speed data}
+
+\item{thre_tem}{The upper threshold of temperature to decide extreme temperature conditions. The unit of thre_tem is 1 cesius degree. The default value is 0 cesius degree.}
+
+\item{thre_visul}{The upper threshold of visibility distance to decide extreme temperature conditions. The unit of thre_visul is 1 meter. The default value is 1000 meters.}
 
 \item{delete_duplicate}{where the duplicated data points are to be deleted. The default value is TRUE, which means the duplicated data points will be deleted by default.}
 }

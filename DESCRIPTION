@@ -4,9 +4,10 @@ Title: Data manupulation for the NSF truck data.
 Version: 0.1.0
 Author: Miao Cai <miao.cai@slu.edu>
 Maintainer: Miao Cai <miao.cai@slu.edu>
-Description: segmenting speeds
-    tidying data
-    aggregating data onto hour
+Description: segmenting speeds, 
+    tidying data, 
+    aggregating data onto hour, 
+    read all .csv files in the folder
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -15,3 +16,7 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: dplyr,
+    data.table,
+    readr,
+    lubridate
