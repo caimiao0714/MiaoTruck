@@ -2,7 +2,7 @@
 #'
 #' Define a funtion "segment0" that separate different shifts
 #'
-#' @importfrom data.table data.table
+#' @import data.table
 #' @param speed the speed is a vector of speeds to be segmented.
 #' @param threshold the threshold that is needed to segment the speeds. (the unit of threshold is an hour)
 #' @param time_diff the difference of time for each data point.
@@ -18,7 +18,7 @@ segment_0 = function(speed, threshold, time_diff) {
   r1$values <- replicate(length(r1$values), 1)
   r1$values <- cumsum(r1$values)
   order_tmp <- inverse.rle(r1)
-  dat_tmp1 <- data.table(speed, order_tmp, time_diff)
+  dat_tmp1 <- data.table::data.table(speed, order_tmp, time_diff)
   dat_tmp2 <- dat_tmp1[,.(sumdiff = sum(time_diff)), by = order_tmp]
   r2 = rle(speed != 0)
   r2$values[r2$values == 0 & dat_tmp2$sumdiff < threshold] <- TRUE
