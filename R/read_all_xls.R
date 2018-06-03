@@ -29,7 +29,7 @@ read_all_excel <- function(path = getwd(), add_variable = TRUE){
       mydata[[i]]$file_name = names(mydata)[i]
     }
   }
-
+  mydata = data.table::rbindlist(mydata)
   setwd(original_path)
   return(mydata)
 }
